@@ -1,4 +1,4 @@
-import { ADD_USER, DELETE_USER } from './users_actions';
+import { ADD_USER, DELETE_USER } from './users.actions';
 
 const initialState = {
   usersList: [],

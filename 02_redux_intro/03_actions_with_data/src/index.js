@@ -1,5 +1,5 @@
 import { store } from './store';
-import { addUser, deleteUser } from './users_actions';
+import { addUser, deleteUser } from './users.actions';
 
 store.dispatch(addUser(1, 'Anna'));
 console.log(store.getState());
