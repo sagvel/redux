@@ -4,9 +4,7 @@ export const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPa
   const visiblePageNumber = currentPage + 1;
   let isPrevPageAvailable = false;
   let isNextPageAvailable = false;
-  // const isNextPageAvailable = () => {
-  //   return totalItems / visiblePageNumber > itemsPerPage;
-  // };
+
   if (currentPage > 0) {
     isPrevPageAvailable = true;
   }
