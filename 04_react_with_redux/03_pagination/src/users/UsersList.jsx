@@ -7,13 +7,7 @@ import * as usersActions from './users.actions';
 const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
   const totalItems = users.length;
   const itemsPerPage = 3;
-  const indexFrom =
-    totalItems % itemsPerPage
-      ? Math.ceil(currentPage * (itemsPerPage / totalItems) * 10)
-      : Math.floor(currentPage * (itemsPerPage / totalItems) * 10);
-  const indexTo = indexFrom + itemsPerPage;
-
-  const usersData = users.slice(indexFrom, indexTo);
+  const usersData = users.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
   return (
     <div>
