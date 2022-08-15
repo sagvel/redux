@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) => {
+const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) => {
   const visiblePageNumber = currentPage + 1;
   let isPrevPageAvailable = false;
   let isNextPageAvailable = false;
@@ -25,3 +25,5 @@ export const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPa
     </div>
   );
 };
+
+export default Pagination;
