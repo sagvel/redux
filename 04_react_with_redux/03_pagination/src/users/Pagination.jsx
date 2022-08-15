@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) => {
-  const visiblePageNumber = currentPage + 1;
+  // const visiblePageNumber = currentPage + 1;
   let isPrevPageAvailable = false;
   let isNextPageAvailable = false;
 
@@ -22,7 +22,7 @@ const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) =
       <button className="btn" onClick={goPrev} disabled={!isPrevPageAvailable}>
         {isPrevPageAvailable && '←'}
       </button>
-      <span className="pagination__page">{visiblePageNumber}</span>
+      <span className="pagination__page">{currentPage + 1}</span>
       <button className="btn" onClick={goNext} disabled={!isNextPageAvailable}>
         {isNextPageAvailable && '→'}
       </button>
