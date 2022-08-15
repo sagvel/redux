@@ -9,9 +9,13 @@ const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) =
     isPrevPageAvailable = true;
   }
 
-  if (totalItems / visiblePageNumber > itemsPerPage) {
+  if (currentPage < Math.ceil(totalItems / itemsPerPage) - 1) {
     isNextPageAvailable = true;
   }
+
+  // if (totalItems / visiblePageNumber > itemsPerPage) {
+  //   isNextPageAvailable = true;
+  // }
 
   return (
     <div className="pagination">

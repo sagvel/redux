@@ -10,6 +10,7 @@ const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
   const [itemsFrom, setItemsFrom] = useState(0);
   const [itemsTo, setItemsTo] = useState(itemsPerPage);
   const usersData = users.slice(itemsFrom, itemsTo);
+
   const goPrev = () => {
     setItemsFrom(itemsFrom - itemsPerPage);
     setItemsTo(itemsTo - itemsPerPage);
@@ -43,6 +44,7 @@ const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
 };
 
 const mapState = state => {
+  console.log(state);
   return {
     users: state.users.usersList,
     currentPage: state.users.currentPage,
