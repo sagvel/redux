@@ -7,27 +7,38 @@ import * as usersActions from './users.actions';
 const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
   const totalItems = users.length;
   const itemsPerPage = 3;
-  const [itemsFrom, setItemsFrom] = useState(0);
-  const [itemsTo, setItemsTo] = useState(itemsPerPage);
-  const usersData = users.slice(itemsFrom, itemsTo);
+  const indexFrom = () => {
+    if (totalItems % itemsPerPage) {
+      return Math.ceil(currentPage * (itemsPerPage / totalItems) * 10);
+    }
 
-  const goPrev = () => {
-    setItemsFrom(itemsFrom - itemsPerPage);
-    setItemsTo(itemsTo - itemsPerPage);
-    prevPage();
+    return Math.floor(currentPage * (itemsPerPage / totalItems) * 10);
   };
+  const indexTo = indexFrom() + itemsPerPage;
+  // const [itemsFrom, setItemsFrom] = useState(0);
+  // const [itemsTo, setItemsTo] = useState(itemsPerPage);
+  const usersData = users.slice(indexFrom(), indexTo);
 
-  const goNext = () => {
-    setItemsFrom(itemsFrom + itemsPerPage);
-    setItemsTo(itemsTo + itemsPerPage);
-    nextPage();
-  };
+  console.log(indexFrom());
+  console.log(currentPage * (itemsPerPage / totalItems));
+  console.log(indexTo);
+  // const goPrev = () => {
+  //   setItemsFrom(itemsFrom - itemsPerPage);
+  //   setItemsTo(itemsTo - itemsPerPage);
+  //   prevPage();
+  // };
+
+  // const goNext = () => {
+  //   setItemsFrom(itemsFrom + itemsPerPage);
+  //   setItemsTo(itemsTo + itemsPerPage);
+  //   nextPage();
+  // };
 
   return (
     <div>
       <Pagination
-        goPrev={goPrev}
-        goNext={goNext}
+        goPrev={prevPage}
+        goNext={nextPage}
         currentPage={currentPage}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
@@ -44,7 +55,6 @@ const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
 };
 
 const mapState = state => {
-  console.log(state);
   return {
     users: state.users.usersList,
     currentPage: state.users.currentPage,
