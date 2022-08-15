@@ -7,32 +7,13 @@ import * as usersActions from './users.actions';
 const UsersList = ({ users, currentPage, nextPage, prevPage }) => {
   const totalItems = users.length;
   const itemsPerPage = 3;
-  const indexFrom = () => {
-    if (totalItems % itemsPerPage) {
-      return Math.ceil(currentPage * (itemsPerPage / totalItems) * 10);
-    }
+  const indexFrom =
+    totalItems % itemsPerPage
+      ? Math.ceil(currentPage * (itemsPerPage / totalItems) * 10)
+      : Math.floor(currentPage * (itemsPerPage / totalItems) * 10);
+  const indexTo = indexFrom + itemsPerPage;
 
-    return Math.floor(currentPage * (itemsPerPage / totalItems) * 10);
-  };
-  const indexTo = indexFrom() + itemsPerPage;
-  // const [itemsFrom, setItemsFrom] = useState(0);
-  // const [itemsTo, setItemsTo] = useState(itemsPerPage);
-  const usersData = users.slice(indexFrom(), indexTo);
-
-  console.log(indexFrom());
-  console.log(currentPage * (itemsPerPage / totalItems));
-  console.log(indexTo);
-  // const goPrev = () => {
-  //   setItemsFrom(itemsFrom - itemsPerPage);
-  //   setItemsTo(itemsTo - itemsPerPage);
-  //   prevPage();
-  // };
-
-  // const goNext = () => {
-  //   setItemsFrom(itemsFrom + itemsPerPage);
-  //   setItemsTo(itemsTo + itemsPerPage);
-  //   nextPage();
-  // };
+  const usersData = users.slice(indexFrom, indexTo);
 
   return (
     <div>
