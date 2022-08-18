@@ -5,7 +5,6 @@ import * as weatherActions from './weather.actions';
 
 const Weather = ({ weatherData, getWeaterData }) => {
   useEffect(() => {
-    console.log('mounted');
     getWeaterData();
   }, []);
 
